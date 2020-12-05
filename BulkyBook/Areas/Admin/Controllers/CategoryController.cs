@@ -1,4 +1,5 @@
-﻿using BulkyBook.DataAccess.Repository;
+﻿using BulkyBook.DataAccess.Repository.IRepository;
+using BulkyBook.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,9 @@ namespace BulkyBook.Areas.Admin.Controllers
     [Area("Admin")]
     public class CategoryController : Controller
     {
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CategoryController(UnitOfWork unitOfWork)
+        public CategoryController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;                
         }
@@ -22,8 +23,25 @@ namespace BulkyBook.Areas.Admin.Controllers
             return View();
         }
 
-        #region API CALLS
+        public IActionResult Upsert(int? id)
+        {
+            Category category = new Category();
+            if(id==null)
+            {
+                //this is for create
+                return View(category);
+            }
 
+            category = _unitOfWork.Category.Get(id.GetValueOrDefault());
+            if(category==null)
+            {
+                return NotFound();
+            }
+            return View(category);
+        }
+
+        #region API CALLS
+        [HttpGet]
         public IActionResult GetAll()
         {
             var _allObj = _unitOfWork.Category.GetAll();
