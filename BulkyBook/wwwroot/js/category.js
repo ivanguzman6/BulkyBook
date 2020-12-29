@@ -39,22 +39,27 @@ function Delete(url)
         icon: "warning",
         buttons: true,
         dangerMode: true
-    }).then((willDelete) => {
-        if (willDelete) {
+    }).then((willDelete) =>
+    {
+        if (willDelete)
+        {
             $.ajax(
             {
                     type: "DELETE",
                     url: url,
-                    success: function (data) {
-                        if (data.success) {
+                    success: function (data)
+                    {
+                        if (data.success)
+                        {
                             toastr.success(data.message);
                             dataTable.ajax.reload();
                         }
-                        else {
+                        else
+                        {
                             toastr.error(data.message);
                         }
                     }
-                });
+            });
         }
     });
 }

@@ -81,7 +81,7 @@ namespace BulkyBook.Areas.Admin.Controllers
             }
             _unitOfWork.Category.Remove(objFromDb);
             _unitOfWork.Save();
-            return Json(new { success = false, message = "Delete successful" });
+            return Json(new { success = true, message = "Delete successful" });
 
 
         }
