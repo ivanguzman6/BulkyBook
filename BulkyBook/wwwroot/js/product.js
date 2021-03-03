@@ -10,6 +10,7 @@ function loadDataTable() {
             "url" : "/Admin/Product/GetAll"
         },
         "columns": [
+            { "data": "id", "visible": false},
             { "data": "title", "width": "15%" },
             { "data": "isbn", "width": "15%" },
             { "data": "price", "width": "15%" },
