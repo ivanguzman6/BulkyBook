@@ -37,7 +37,7 @@ namespace BulkyBook.Areas.Admin.Controllers
             ProductVM ProductVM = new ProductVM()
             {
                 Product = new Product(),
-                CategoryList = _unitOfWork.Category.GetAll().Select(i => new SelectListItem {
+                CategoryList = _unitOfWork.Company.GetAll().Select(i => new SelectListItem {
                     Text = i.Name,
                     Value = i.Id.ToString()
                 }),
@@ -104,7 +104,7 @@ namespace BulkyBook.Areas.Admin.Controllers
             else
             {
                 //Este else es para evitar errores en el servidor por valores nulos en estos dos campos
-                productVM.CategoryList = _unitOfWork.Category.GetAll().Select(i => new SelectListItem
+                productVM.CategoryList = _unitOfWork.Company.GetAll().Select(i => new SelectListItem
                 {
                     Text = i.Name,
                     Value = i.Id.ToString()
