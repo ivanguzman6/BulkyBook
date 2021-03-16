@@ -7,6 +7,7 @@ namespace BulkyBook.DataAccess.Repository.IRepository
     public interface IUnitOfWork : IDisposable
     {
         ICategoryRepository Category { get; }
+        IApplicationUserRepository ApplicationUser { get; }
         ICoverTypeRepository CoverType { get; }
         IProductRepository Product { get; }
         ICompanyRepository Company { get; }
