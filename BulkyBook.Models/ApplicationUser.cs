@@ -23,5 +23,6 @@ namespace BulkyBook.Models
 
         [ForeignKey("CompanyId")]
         public Company Company { get; set; }
+        
     }
 }
