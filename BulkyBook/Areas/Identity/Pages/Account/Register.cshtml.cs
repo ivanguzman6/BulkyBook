@@ -93,6 +93,7 @@ namespace BulkyBook.Areas.Identity.Pages.Account
 
             Input = new InputModel()
             {
+                Email = "hola",
                 CompanyList = _unitOfWork.Company.GetAll().Select(i => new SelectListItem
                 {
                     Text = i.Name,
